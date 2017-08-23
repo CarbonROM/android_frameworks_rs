@@ -84,14 +84,22 @@ ifeq ($(ARCH_X86_HAVE_SSSE3),true)
 endif
 
 LOCAL_SHARED_LIBRARIES += libRS_internal libc++ liblog libz
-LOCAL_SHARED_LIBRARIES += libbcinfo libblas
+LOCAL_SHARED_LIBRARIES += libbcinfo
 LOCAL_STATIC_LIBRARIES := libbnnmlowp
 
 LOCAL_C_INCLUDES += frameworks/compile/libbcc/include
 LOCAL_C_INCLUDES += frameworks/rs
-LOCAL_C_INCLUDES += external/cblas/include
 LOCAL_C_INCLUDES += external/gemmlowp/eight_bit_int_gemm
 LOCAL_C_INCLUDES += external/zlib
+
+ifeq ($(TARGET_USES_QSML),true)
+    LOCAL_SHARED_LIBRARIES += libQSML-0.15.2
+    LOCAL_C_INCLUDES += vendor/qcom/perf/$(TARGET_ARCH)/include
+    LOCAL_CFLAGS += -DUSE_QSML -fopenmp
+else
+    LOCAL_SHARED_LIBRARIES += libblas
+    LOCAL_C_INCLUDES += external/cblas/include
+endif
 
 include frameworks/compile/libbcc/libbcc-targets.mk
 

@@ -8,13 +8,14 @@ rs-prebuilts-full: \
     libRSSupport \
     libRSSupportIO \
     libRScpp_static \
-    libblasV8 \
     libcompiler_rt \
     librsrt_arm.bc \
     librsrt_arm64.bc \
     librsrt_mips.bc \
     librsrt_x86.bc \
-    librsrt_x86_64.bc
+    librsrt_x86_64.bc \
+    libQSML-0.15.2 \
+    libblasV8
 
 ifneq ($(HOST_OS),darwin)
 rs-prebuilts-full: \

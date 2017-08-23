@@ -169,13 +169,20 @@ LOCAL_SRC_FILES_x86 += cpu_ref/rsCpuIntrinsics_x86.cpp
 LOCAL_CFLAGS_x86_64 += -DARCH_X86_HAVE_SSSE3
 LOCAL_SRC_FILES_x86_64 += cpu_ref/rsCpuIntrinsics_x86.cpp
 
-LOCAL_REQUIRED_MODULES := libblasV8
 LOCAL_STATIC_LIBRARIES := libbnnmlowpV8
 LOCAL_LDFLAGS += -llog -ldl -Wl,--exclude-libs,libc++_static.a
 LOCAL_NDK_STL_VARIANT := c++_static
 
-LOCAL_C_INCLUDES += external/cblas/include
 LOCAL_C_INCLUDES += external/gemmlowp/eight_bit_int_gemm
+
+ifeq ($(TARGET_USES_QSML),true)
+    LOCAL_REQUIRED_MODULES := libQSML-0.15.2
+    LOCAL_C_INCLUDES += vendor/qcom/perf/$(TARGET_ARCH)/include
+    LOCAL_CFLAGS += -DUSE_QSML -fopenmp
+else
+    LOCAL_REQUIRED_MODULES := libblasV8
+    LOCAL_C_INCLUDES += external/cblas/include
+endif
 
 LOCAL_CFLAGS += $(rs_base_CFLAGS) -DGEMMLOWP_USE_STLPORT
 
