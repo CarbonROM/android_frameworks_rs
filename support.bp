@@ -155,7 +155,6 @@ cc_defaults {
         },
     },
 
-    required: ["libblasV8"],
     static_libs: ["libbnnmlowpV8"],
     shared_libs: [
         "liblog",
@@ -183,6 +182,17 @@ cc_defaults {
         // Allow implicit fallthrough in rsContext.cpp:414 until it is fixed.
         "-Wno-error=implicit-fallthrough",
     ],
+
+     product_variables: {
+        carbon: {
+            target_uses_qml: {
+                required: ["libQML-1.4.0"],
+            },
+            target_uses_eigen: {
+                required: ["libblasV8"],
+            },
+        },
+    },
 }
 
 cc_library_shared {
