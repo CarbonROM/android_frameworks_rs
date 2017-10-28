@@ -94,7 +94,6 @@ cc_library_shared {
         "libz",
 
         "libbcinfo",
-        "libblas",
     ],
     static_libs: ["libbnnmlowp"],
 
@@ -116,6 +115,22 @@ cc_library_shared {
             // Not building RenderScript modules in PDK builds, as libmediandk
             // is not available in PDK.
             enabled: false,
+        },
+        carbon: {
+            Target_uses_qsml64: {
+                cflags: ["-DUSE_QSML", "-fopenmp"],
+		shared_libs: ["libQSML-0.15.2"],
+                include_dirs: ["vendor/qcom/perf/arm64/include"],
+            },
+            Target_uses_qsml32: {
+                cflags: ["-DUSE_QSML", "-fopenmp"],
+		shared_libs: ["libQSML-0.15.2"],
+                include_dirs: ["vendor/qcom/perf/arm/include"],
+            },
+            Target_uses_eigen: {
+		shared_libs: ["libblas"],
+            },
+
         },
     },
 }
