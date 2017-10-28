@@ -1,6 +1,10 @@
 cc_library_shared {
     name: "libRSCpuRef",
-    defaults: ["libbcc-targets"],
+    defaults: [
+        "libbcc-targets",
+        "uses_qml_defaults",
+        "uses_eigen_defaults",
+    ],
     vendor_available: true,
     native_bridge_supported: true,
     vndk: {
@@ -93,7 +97,6 @@ cc_library_shared {
         "libz",
 
         "libbcinfo",
-        "libblas",
     ],
     static_libs: ["libbnnmlowp"],
     header_libs: [

@@ -42,7 +42,11 @@ gensrcs {
 
 cc_defaults {
     name: "libRSSupport_defaults",
-    defaults: ["rs_support_defaults"],
+    defaults: [
+        "rs_support_defaults",
+        "uses_qml_support_defaults",
+        "uses_eigen_support_defaults",
+    ],
     srcs: [
         "rsAllocation.cpp",
         "rsApiAllocation.cpp",
@@ -155,7 +159,6 @@ cc_defaults {
         },
     },
 
-    required: ["libblasV8"],
     static_libs: ["libbnnmlowpV8"],
     shared_libs: [
         "liblog",
