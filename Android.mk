@@ -15,7 +15,7 @@ rs-prebuilts-full: \
     librsrt_x86.bc \
     librsrt_x86_64.bc \
     libblasV8 \
-    libQSML-0.15.2
+    libQSML-0.15.5
 
 ifneq ($(HOST_OS),darwin)
 rs-prebuilts-full: \
