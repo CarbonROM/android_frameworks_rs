@@ -1,7 +1,7 @@
 #ifndef RS_COMPATIBILITY_LIB
-#ifdef USE_QSML
-#include "qblas_cblas.h"
-#include "qblas.h"
+#ifdef USE_QML
+#include "qml_cblas.h"
+#include "qml.h"
 #else
 #include "cblas.h"
 #endif
@@ -458,8 +458,8 @@ typedef void (*FnPtr_cblas_zher2k)(const enum CBLAS_ORDER Order, const enum CBLA
 
 bool loadBLASLib() {
     void* handle = NULL;
-#ifdef USE_QSML
-    handle = dlopen("libQSML-0.15.5.so", RTLD_LAZY | RTLD_LOCAL);
+#ifdef USE_QML
+    handle = dlopen("libQML-1.0.0.so", RTLD_LAZY | RTLD_LOCAL);
 #else
     handle = dlopen("libblasV8.so", RTLD_LAZY | RTLD_LOCAL);
 #endif

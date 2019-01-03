@@ -126,10 +126,10 @@ cc_library_shared {
             enabled: false,
         },
         carbon: {
-            target_uses_qsml: {
-                cflags: ["-DUSE_QSML", "-fopenmp"],
-		shared_libs: ["libQSML-0.15.5"],
-		header_libs: ["libQSML_headers"],
+            target_uses_qml: {
+                cflags: ["-DUSE_QML", "-fopenmp"],
+		shared_libs: ["libQML-1.0.0"],
+		header_libs: ["libQML_headers"],
             },
             target_uses_eigen: {
 		shared_libs: ["libblas"],
