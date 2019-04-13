@@ -185,7 +185,7 @@ cc_library_shared {
      product_variables: {
         carbon: {
             target_uses_qml: {
-                required: ["libQML-1.0.0"],
+                required: ["libQML-1.1.0"],
             },
             target_uses_eigen: {
                 required: ["libblasV8"],
