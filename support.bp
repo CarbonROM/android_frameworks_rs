@@ -191,6 +191,7 @@ cc_defaults {
 cc_library_shared {
     name: "libRSSupport",
     defaults: ["libRSSupport_defaults"],
+    system_ext_specific: true,
     sdk_version: "9",
 
     target: {
